@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CAM Atmospheric Verification - Parallel</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="https://www.emc.ncep.noaa.gov/users/verification/style/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="https://www.emc.ncep.noaa.gov/users/verification/style/fonts.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+<style>
+.dropdown-content a {padding: 0.5em 0.5em;}
+</style>
+</head>
+
+<script>
+function createDropdown(opt) {
+  /* When the user clicks on the button, 
+     toggle between hiding and showing the dropdown content */
+  document.getElementById(opt.nextElementSibling.id).classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  var oFrame = document.getElementById("body_frame");
+  oFrame.contentWindow.document.onclick = function() {
+        var i;
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+  };
+  if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+          }
+      }
+  }
+  if (event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (event.target.nextElementSibling.id != openDropdown.id) {
+              if (openDropdown.classList.contains('show')) {
+                  openDropdown.classList.remove('show');
+               }
+          }
+      }
+  }
+}
+</script>
+
+<body>
+<div id="page" class="container">
+	<div id="header">
+		<div id="logo">
+			<img src="https://www.emc.ncep.noaa.gov/users/verification/style/images/noaa.png" alt="" width="100" />
+			<img src="https://www.emc.ncep.noaa.gov/users/verification/style/images/nws.png" alt="" width="100" />
+			<h1><font color="white">Experimental<br>CAM<br>Verification</font></h1>
+		</div>
+		<div id="menu">
+		        <ul>
+			    <li><a href="../../../" accesskey="1" title="">HOME</a></li>
+			    <div class="dropdown">
+				    <button onclick="createDropdown(this)" class="dropbtn" accesskey="2">GRID-TO-GRID<br>(DETERMINISTIC) &rsaquo;&rsaquo;</button>
+                                     <div id="Dropdown_grid2grid_det" class="dropdown-content">
+                                         <a href="../../../det/grid2grid/precip">Precipitation</a>
+                                         <a href="../../../det/grid2grid/snowfall">Snowfall</a>
+                                         <a href="../../../det/grid2grid/precip_maps">Precipitation (maps)</a>
+                                         <!--a href="det/grid2grid/refc">Composite Reflectivity</a>
+                                         <a href="det/grid2grid/retop">Echo Top</a>
+                                         <a href="det/grid2grid/surr_svr">Surrogate Severe</a-->
+                                     </div>
+                            </div>
+			    <div class="dropdown">
+				    <button onclick="createDropdown(this)" class="dropbtn" accesskey="3">GRID-TO-OBS<br>(DETERMINISTIC) &rsaquo;&rsaquo;</button>
+                                     <div id="Dropdown_grid2obs_det" class="dropdown-content">
+                                         <a href="../../../det/grid2obs/hgt">Geopotential Height</a>
+                                         <a href="../../../det/grid2obs/tmp">Temperature</a>
+                                         <a href="../../../det/grid2obs/ugrd_vgrd">Vector Wind</a>
+                                         <a href="../../../det/grid2obs/ugrd">U Wind</a>
+                                         <a href="../../../det/grid2obs/vgrd">V Wind</a>
+                                         <a href="../../../det/grid2obs/spfh">Specific Humidity</a>
+                                         <a href="../../../det/grid2obs/tmp2m">2-m Temperature</a>
+                                         <a href="../../../det/grid2obs/dpt2m">2-m Dewpoint</a>
+                                         <a href="../../../det/grid2obs/rh2m">2-m Relative Humidity</a>
+                                         <a href="../../../det/grid2obs/mslp">Sea Level Pressure</a>
+                                         <a href="../../../det/grid2obs/ugrd_vgrd10m">10-m Vector Wind</a>
+                                         <a href="../../../det/grid2obs/ugrd10m">10-m U Wind</a>
+                                         <a href="../../../det/grid2obs/vgrd10m">10-m V Wind</a>
+                                         <a href="../../../det/grid2obs/wind10m">10-m Wind Speed</a>
+                                         <a href="../../../det/grid2obs/gustsfc">Surface Wind Gust</a>
+                                         <a href="../../../det/grid2obs/hpbl">Planetary Boundary Layer Height</a>
+                                         <a href="../../../det/grid2obs/tcdc">Total Cloud Area Fraction</a>
+                                         <a href="../../../det/grid2obs/ceiling">Cloud Ceiling Height</a>
+                                         <a href="../../../det/grid2obs/vis">Surface Visibility</a>
+                                         <a href="../../../det/grid2obs/cape">CAPE</a>
+                                         <a href="../../../det/grid2obs/ptype">Precipitation Type</a>
+                                     </div>
+                            </div>
+			    <div class="dropdown">
+				    <button onclick="createDropdown(this)" class="dropbtn" accesskey="4">GRID-TO-GRID<br>(ENSEMBLE) &rsaquo;&rsaquo;</button>
+                                     <div id="Dropdown_grid2grid_ens" class="dropdown-content">
+					 <a href="../../../ens/grid2grid/apcp1">Precipitation<br>(Performance Diagram)</a>
+					 <a href="../../../ens/grid2grid/apcp2">Precipitation<br>(Threshold Mean)</a>
+					 <a href="../../../ens/grid2grid/apcp4">Precipitation FSS<br>(Threshold Mean)</a>
+					 <a href="../../../ens/grid2grid/apcp3">Precipitation<br>(Spatial Maps)</a>
+					 <a href="../../../ens/grid2grid/snow1">Snowfall<br>(Performance Diagram)</a>
+					 <a href="../../../ens/grid2grid/snow2">Snowfall<br>(Threshold Mean)</a>
+                                         <!--a href="ens/grid2grid/apcp">Composite Reflectivity</a>
+                                         <a href="ens/grid2grid/retop">Echo Top</a>
+                                         <a href="ens/grid2grid/surr_svr">Surrogate Severe</a-->
+                                     </div>
+                            </div>
+			    <div class="dropdown">
+				    <button onclick="createDropdown(this)" class="dropbtn" id="active" accesskey="5">GRID-TO-OBS<br>(ENSEMBLE) &rsaquo;&rsaquo;</button>
+                                     <div id="Dropdown_grid2obs_ens" class="dropdown-content">
+                                         <a href="../../../ens/grid2obs/profile">Upper Air Fields</a>
+					 <a href="../../../ens/grid2obs/profile1">Upper Air Fields <br>(Individual Members)</a>
+                                         <a href="../../../ens/grid2obs/t850">850-hPa Temperature</a>
+                                         <a href="../../../ens/grid2obs/w850">700, 850-hPa Wind Speed</a>
+					 <a href="../../../ens/grid2obs/sfc1">Surface Fields <br>(Forecast Hour Mean)</a>
+					 <a href="../../../ens/grid2obs/sfc3">Surface Fields <br>(Individual Members)</a>
+                                         <a href="../../../ens/grid2obs/sfc2">Surface Fields <br>(Time Series)</a>
+					 <a href="../../../ens/grid2obs/cnv3">Ceiling & Visibility<br>(Performance Diagram)</a>
+					 <a href="../../../ens/grid2obs/cnv1">Ceiling & Visibility<br>(Threshold Mean)</a>
+					 <a href="../../../ens/grid2obs/cnv2">Ceiling & Visibility<br>(Forecast Hour Mean)</a>
+					 <a href="../../../ens/grid2obs/tcdc1">Total Cloud<br>(Threshold Mean)</a>
+					 <a href="../../../ens/grid2obs/tcdc2">Total Cloud<br>(Forecast Hour Mean)</a>
+					 <a href="../../../ens/grid2obs/tcdc3">Total Cloud<br>(Performance Diagram)</a>
+					 <a href="../../../ens/grid2obs/cape3">CAPE<br>(Performance Diagram)</a>
+					 <a href="../../../ens/grid2obs/cape1">CAPE<br>(Threshold Mean)</a>
+					 <a href="../../../ens/grid2obs/cape2">CAPE<br>(Forecast Hour Mean)</a>
+					 <a href="../../../ens/grid2obs/spc3">CAPE<br>(SPC Outlook Areas -<br>Performance Diagram)</a>
+					 <a href="../../../ens/grid2obs/spc1">CAPE<br>(SPC Outlook Areas -<br>Threshold Mean)</a>
+					 <a href="../../../ens/grid2obs/spc2">CAPE<br>(SPC Outlook Areas -<br>Forecast Hour Mean)</a>
+                                     </div>
+                            </div>
+			    <div class="dropdown">
+				    <button onclick="createDropdown(this)" class="dropbtn" accesskey="6">GRID-TO-OBS<br>(FIREWX NEST) &rsaquo;&rsaquo;</button>
+                                     <div id="Dropdown_grid2obs_firewx" class="dropdown-content">
+                                         <a href="../../../firewx_nest/tmp2m">2-m Temperature</a>
+                                         <a href="../../../firewx_nest/dpt2m">2-m Dew Point</a>
+                                         <a href="../../../firewx_nest/rh2m">2-m Relative Humidity</a>
+                                         <a href="../../../firewx_nest/ugrd10m">10-m U Wind</a>
+                                         <a href="../../../firewx_nest/vgrd10m">10-m V Wind</a>
+                                         <a href="../../../firewx_nest/ugrd_vgrd10m">10-m Vector Wind</a>
+                                         <a href="../../../firewx_nest/wind10m">10-m Wind Speed</a>
+                                         <a href="../../../firewx_nest/gustsfc">Surface Wind Gust</a>
+                                         <a href="../../../firewx_nest/pbl">PBL Height</a>
+                                     </div>
+                            </div>
+                            <li><a href="https://www.emc.ncep.noaa.gov/users/verification/regional/para.html" accesskey="7" title="">&lsaquo;&lsaquo; RETURN TO<br><u>REGIONAL MODELS</u><br>VERIFICATION</a></li>
+                            <li></li>
+                        </ul>
+		</div>
+	</div>
+	<div id="main">
+		<div id="banner">
+                    <iframe id="body_frame" src="base.php" width="1100" height="1100" style="border: 1px solid black;"></iframe>
+		</div>
+		<div id="welcome">
+			<p>This page displays verification for the operational Convection-Allowing Models (CAMs) at EMC.</p>
+                        <p>DISCLAIMER: This web page is not "operational" and therefore not subject to 24-hr monitoring by NCEP's Central Operations staff.</p>
+		</div>
+                <div id="contact">
+			<p><br><b>CONTACT INFORMATION</b><br>Marcel.Caron@noaa.gov - Webmaster, CAM Deterministic Verification<br>Binbin.Zhou@noaa.gov - CAM Ensemble Verification<br>Perry.Shafran@noaa.gov - FireWx Nest Verification<br>Jason.Levit@noaa.gov - VPPPG Branch Chief 
+		</div>
+		<div id="footer">
+			<img src="https://www.emc.ncep.noaa.gov/users/verification/style/images/noaa.png" alt="" width="100" />
+			<img src="https://www.emc.ncep.noaa.gov/users/verification/style/images/nws.png" alt="" width="100" />
+			<img src="https://www.emc.ncep.noaa.gov/users/verification/style/images/commerce.png" alt="" width="100" />
+			<img src="https://www.emc.ncep.noaa.gov/users/verification/style/images/usagov.png" alt="" width="100" />
+			<br>
+			<a href="https://www.weather.gov/privacy">Privacy Policy</a> | <a href="https://www.weather.gov/disclaimer">Disclaimer</a> | <a href="https://www.commerce.gov">Department of Commerce</a> | <a href="https://www.noaa.gov">NOAA</a> | <a href="https://www.weather.gov">NWS</a> | <a href="https://www.ncep.noaa.gov">NCEP</a> | <a href="https://www.emc.ncep.noaa.gov">EMC</a>
+		</div>
+		<div id="copyright">
+		</div>
+	</div>
+</div>
+</body>
+</html>
