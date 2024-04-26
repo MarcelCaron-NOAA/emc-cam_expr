@@ -1,2 +1,5 @@
 *.jpg
 *.png
+*.gif
+*.tar
+*.tar*
